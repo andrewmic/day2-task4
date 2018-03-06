@@ -11,6 +11,18 @@ public class CompoundInterestCalculator {
         double interestRate;
         double[] interestRateArray;
         interestRateArray = new double[10];     // kaip saugot cikle nezinant kiek galima interest rate ivest?
+
+        //Ok, here is a detailed explanation:
+        // 1. First you create an empty array (size = 0)
+        // 2. After every input (interestRate) you are expanding "interestRateArray"'s size by 1 and writing new value at the end of an array.
+        //    Expanding can be done by copying old array content to new one like this:
+        //    ...
+        //    double[] newArray = new double[oldArray.length + 1];
+        //    System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+        //    newArray[oldArray.length] = value;
+        //    oldArray = newArray;
+        //    ...
+
         System.out.print("Amount: ");
         double originalAmount = scanner.nextDouble();
 
@@ -21,7 +33,7 @@ public class CompoundInterestCalculator {
             ++interestRateCount;
             interestRateArray[interestRateCount] = interestRate;
 
-        }while (interestRate != 0);
+        }while (interestRate != 0); //Good use of do-while statement! Nice work!
 
         System.out.print("Period length (years): ");
         int periodLength = scanner.nextInt();
@@ -51,6 +63,7 @@ public class CompoundInterestCalculator {
         for (double[] row : intermediateInterestAmounts) {
             for (double number : row) {
                 System.out.print(String.format("%.2f", number) + " ");
+                //Hint hint.. This is a better way to format it - "System.out.printf("%.2f\t", number);"
             }
             System.out.println();
         }
